@@ -18,4 +18,5 @@ rm -rf nexus3-oss
 /usr/local/bin/ansible-galaxy install geerlingguy.apache
 /usr/local/bin/ansible-galaxy install ansible-thoteam.nexus3-oss
 
+# Get it from "Example Playbook" on: https://github.com/ansible-ThoTeam/nexus3-oss
 /usr/local/bin/ansible-playbook nexus.yml

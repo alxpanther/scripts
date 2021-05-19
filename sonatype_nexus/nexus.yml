@@ -7,8 +7,8 @@
 
   vars:
     nexus_timezone: 'Europe/Kiev'
-    nexus_admin_password: "debian-rulez"
-    nexus_public_hostname: 'idl-registry-01'
+    nexus_admin_password: "password"
+    nexus_public_hostname: 'hostserver'
     httpd_setup_enable: false
 
     nexus_data_dir: '/var/lib/registry'

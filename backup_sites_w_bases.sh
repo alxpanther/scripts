@@ -6,23 +6,24 @@ SSH_COMMAND="`which ssh` -p 22001"
 
 SRC="/opt/backups/"
 
-DST_HOST="devops-2@51.89.219.86"
-DST_DIR="/home/devops-2/backups/stablecoin-dev/"
+# !!! CHANGE THIS !!!
+DST_HOST="devops-2@A.B.C.D"
+DST_DIR="/home/devops/backups/site/"
 
 DST="${DST_HOST}:${DST_DIR}/${date_backup}/"
 LOG="/var/log/backup.log"
 
 # ----
 
-SITES_BACKUP_NAME="stablecoin_site-"
-SITES_SRC=( /home/gitlab-runner/builds/4RxfPiJ5/0/profit-dev/stablecoin-front /home/php-dev-3/stablecoin-back )
+SITES_BACKUP_NAME="site-"
+SITES_SRC=( /home/gitlab-runner/builds/XXX/0/XXX-dev/XXX-front /home/php-dev-3/XXX-back )
 
 MYSQL_USER="root"
 MYSQL_PASS=""
 MYSQL_HOST="localhost"
-MYSQL_BACKUP_NAME="stablecoin_base-"
+MYSQL_BACKUP_NAME="XXX_base-"
 MYSQL_BACKUP_PATH="/opt/backups/"
-MYSQL_BASES=( stablecoin )   # ( example1 example2 etc )
+MYSQL_BASES=( XXXX )   # ( example1 example2 etc )
 MYSQLDUMP_WHERE=`which mysqldump`
 #MYSQLDUMP_STR="${MYSQLDUMP_WHERE} -h ${MYSQL_HOST} -u ${MYSQL_USER} --password=${MYSQL_PASS}"
 MYSQLDUMP_STR="${MYSQLDUMP_WHERE} -h ${MYSQL_HOST} -u ${MYSQL_USER}"

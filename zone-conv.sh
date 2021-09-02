@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Converting direct to the reverse zone for BIND
+# Created by Alexander Fedorko (alx69, alx@alx.kiev.ua) 2020-09-20
+
 EXCLUDE=';|ptr|bip|btm|ns1|ns2|178\.158'
 NAMED_FILE='update.named'
 

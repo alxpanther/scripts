@@ -14,7 +14,8 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **backup_sites_w_bases.sh** - бекап базы и сайта сперва в tgz, а потом трансфер на удаленный бекап сервер.
 * **backup_gitlab.sh** - бекап GitLab'а
 * **krew_install.sh** - инсталяха для KREW (дополнение для kubectl)
-* **apache2iptables_ban.sh** - BAN IP адресов на определенные web запросы при сильной атаке
+* **apache2iptables_ban.sh** - BAN IP адресов на определенные web запросы при сильной атаке. Вариант для Apache
+* **nginx2iptables_ban.sh** - BAN IP адресов на определенные web запросы при сильной атаке. Вариант для nginx
 * **china_ban.sh** - BAN только IP Китая
 * **block_us.sh** - Сети Google в whitelist через ipset чтобы не забанить
 

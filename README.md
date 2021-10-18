@@ -18,6 +18,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **nginx2iptables_ban.sh** - BAN IP адресов на определенные web запросы при сильной атаке. Вариант для nginx
 * **china_ban.sh** - BAN только IP Китая
 * **block_us.sh** - Сети Google в whitelist через ipset чтобы не забанить
+* **skype_repo_fix.sh** - Скачивание нового PGP ключа для Skype репозитория (для Ubunu/Mint)
 
 # Сайт сканера безопасности для сайтов
 

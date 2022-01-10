@@ -10,6 +10,8 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 `Это прописать для всех зон, которые будет обновлять скрипт.`
 
 * **sonatype_nexus/** - скрипт и playbook для Ansible по установке Sonatype Nexus Repository Manager (registry для docker, python, nodejs и т.д.)
+* **mail_log2telegram/** - сервис для отправки в Telegram ошибок 55* из лога почты (например Exim). Чтобы сразу видеть, что какое-то сообщение не ушло и причина какая
+* **grep_mail_logs/** - Web сервис для поиска в логах почты определенного адреса. Поиск идет по любому полю, будь-то email адрес или внутренни ID почтовика
 * **ssh_tunnel.sh** - поднятие SSH тунеля (например для проброса порта MySQL с виртуалки на виртуалку, чтобы не пробрасывать порты через iptables и роутинг)
 * **backup_sites_w_bases.sh** - бекап базы и сайта сперва в tgz, а потом трансфер на удаленный бекап сервер.
 * **backup_gitlab.sh** - бекап GitLab'а
@@ -19,6 +21,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **china_ban.sh** - BAN только IP Китая
 * **block_us.sh** - Сети Google в whitelist через ipset чтобы не забанить
 * **skype_repo_fix.sh** - Скачивание нового PGP ключа для Skype репозитория (для Ubunu/Mint)
+* **domain_date.sh** - получение даты, когда истекает регистрация доменов. Можно чуть видоименить скрипт, чтобы подключить его, например к Zabbix и таким образом мониторить expire доменов.
 
 # Сайт сканера безопасности для сайтов
 
@@ -33,3 +36,10 @@ https://revisium.com/ai/
 # Сайт сканера на SSL
 
 https://www.ssllabs.com/ssltest/
+
+# Некоторые команды и/или скрипты в одну строку
+
+### Поиск того, что в swap'е
+```sh
+for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | more
+```

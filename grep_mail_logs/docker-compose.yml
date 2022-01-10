@@ -1,0 +1,18 @@
+# DO NOT CHNAGE VERSION BELOW 3.6
+version: "3.6"
+
+services:
+  nginx-php-fpm:
+    container_name: nginx-php-fpm
+    build:
+      context: nginx-php-fpm
+    image: "nginx-php-fpm"
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/root/logs:/usr/share/nginx/html/logs"
+      - "./logs-nginx:/var/log/nginx"
+      - "/etc/letsencrypt/live/smtp.com/privkey.pem:/etc/nginx/ssl/privkey.pem"
+      - "/etc/letsencrypt/live/smtp.com/fullchain.pem:/etc/nginx/ssl/fullchain.pem"

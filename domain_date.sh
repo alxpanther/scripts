@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Created by Alexander Fedorko (alx69, alx69@ukr.net) 2020-09-20
+
 DOMAINS=( serveradmin.ru server.pro )
 
 THIS_DATE=`date +"%Y-%m-%d"`

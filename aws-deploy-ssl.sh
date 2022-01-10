@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Created by Alexander Fedorko (alx69, alx69@ukr.net) 2019-09-20
+
+export PATH=/root/.local/bin:/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin:/usr/local/sbin
+
 CERT_DATE=`date "+%Y%m%d%H%M%S"`
 CERT_PATH="/etc/letsencrypt/live/dii.dn.ua" # путь где лежат сертификаты
 CERT_DOMAIN_NAME="dii-dn"                   # через черточки, а не точки

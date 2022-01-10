@@ -1,6 +1,8 @@
 #!/bin/bash
 
-export PATH=/root/.local/bin:/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin:/usr/local/sbin:/opt/scripts
+# Created by Alexander Fedorko (alx69, alx69@ukr.net) 2020-09-20
+
+export PATH=/root/.local/bin:/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin:/usr/local/sbin
 
 date_backup=`date +"%d-%m-%Y"`
 

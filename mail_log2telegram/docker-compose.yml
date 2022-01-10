@@ -1,0 +1,11 @@
+version: "3.6"
+
+services:
+  mail2telegram:
+    container_name: mail2telegram
+    build:
+      context: mail2telegram
+    image: "mail2telegram"
+    restart: always
+    volumes:
+      - "/root/logs:/root/logs"

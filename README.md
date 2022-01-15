@@ -29,7 +29,7 @@ https://sitecheck.sucuri.net/
 
 # Скрипт для проверки сайта на предмет заражения
 
-https://revisium.com/ai/
+https://revisium.com/
 
 Скрипт на PHP. Нужно скачать и просканировать сайт внутри самого сервера.
 

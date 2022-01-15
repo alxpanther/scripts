@@ -7,5 +7,8 @@ services:
       context: mail2telegram
     image: "mail2telegram"
     restart: always
+    environment:
+      - "CHAT_ID=XXXXX"                  # Telegram Chat ID
+      - "BOT_ID=botXXXXXXXXX:XXXXXXXX"   # Telegram Bot ID
     volumes:
       - "/root/logs:/root/logs"

@@ -22,6 +22,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **block_us.sh** - Сети Google в whitelist через ipset чтобы не забанить
 * **skype_repo_fix.sh** - Скачивание нового PGP ключа для Skype репозитория (для Ubunu/Mint)
 * **domain_date.sh** - получение даты, когда истекает регистрация доменов. Можно чуть видоименить скрипт, чтобы подключить его, например к Zabbix и таким образом мониторить expire доменов.
+* **create-instance-over-qemu.sh** - создание виртуальной машины в QEMU через Ubuntu/CentOS/Fedora с провиженингом через cloud-init
 
 # Сайт сканера безопасности для сайтов
 
@@ -42,4 +43,10 @@ https://www.ssllabs.com/ssltest/
 ### Поиск того, что в swap'е
 ```sh
 for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | more
+```
+
+### Добавление IP адреса на RedHat's "на лету"
+```sh
+nmcli con mod enp1s0 +ipv4.addresses "192.168.1.51/24"
+nmcli con up enp0s3
 ```

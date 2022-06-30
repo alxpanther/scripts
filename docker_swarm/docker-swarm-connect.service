@@ -1,0 +1,18 @@
+[Unit]
+Description=Docker Swarm Cluster connect and disconnect service
+Documentation=mr.addams@gmail.com
+After=network-online.target docker.socket firewalld.service containerd.service docker.service
+Wants=network-online.target
+Requires=docker.socket containerd.service docker.service
+
+
+[Service]
+Type=simple
+ExecStart=/bin/swarm_connect.sh
+TimeoutStartSec=1
+RemainAfterExit=true
+ExecStop=/bin/swarm_leave.sh
+
+
+[Install]
+WantedBy=multi-user.target

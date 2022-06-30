@@ -1,0 +1,43 @@
+version: "3.9"
+
+# Swarm init:
+# docker swarm init --listen-addr 192.168.99.XXX --advertise-addr 192.168.99.XXX
+#
+# for Deploy:
+# docker stack deploy --with-registry-auth --orchestrator swarm --resolve-image always --prune -c <(docker-compose -f docker-compose-aws.yml config) front
+# docker service update --with-registry-auth --image $DOCKER_IMAGE_TAG:latest --force xxx-front
+#
+# for Remove
+# docker stack rm front
+
+services:
+
+  xxx:
+    build:
+      context: .
+    image: "${CI_REGISTRY_IMAGE}/xxx"
+    ports:
+      - target: 3001
+        published: 3001
+        protocol: tcp
+        mode: ingress
+    networks:
+      - "front"
+    deploy:
+      replicas: 0
+      placement:
+        max_replicas_per_node: 4
+        constraints:
+          - "node.role == worker"
+#          - "node.role == manager"
+      restart_policy:
+        condition: any
+        delay: 2s
+      update_config:
+        parallelism: 10
+        delay: 2s
+        order: "stop-first"
+
+networks:
+  front:
+    name: front

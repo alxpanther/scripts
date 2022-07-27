@@ -4,7 +4,7 @@
 * **node_rm.sh** - убирает упоминания о нодах, которые уже в Down режиме
 
 * **docker-swarm-connect.service** - сервис для systemd, который подключает новую ноду к docker swarm и отключает, когда AWS закрывает (shutdown) ноду.
-* **swam_connect.sh** - скрипты подключения к docker swarm. Нужен для работы сервиса systemd "docker-swarm-connect"
+* **swarm_connect.sh** - скрипты подключения к docker swarm. Нужен для работы сервиса systemd "docker-swarm-connect"
 * **swarm_leave.sh** - скрипты отключения от docker swarm при shutdown'е. Нужен для работы сервиса systemd "docker-swarm-connect"
 
 * **docker-compose-aws.yml** - примерный docker-compose.yml файл со строчками для деплоя и обновления при изминении image

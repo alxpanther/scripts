@@ -1,6 +1,6 @@
 [Unit]
 Description=Docker Swarm Cluster connect and disconnect service
-Documentation=mr.addams@gmail.com
+#Documentation=XXX@gmail.com
 After=network-online.target docker.socket firewalld.service containerd.service docker.service
 Wants=network-online.target
 Requires=docker.socket containerd.service docker.service

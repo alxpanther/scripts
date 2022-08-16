@@ -51,3 +51,10 @@ for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print "
 nmcli con mod enp1s0 +ipv4.addresses "192.168.1.51/24"
 nmcli con up enp0s3
 ```
+
+### Telnet в Alpine Linux
+```sh
+apk update
+apk add busybox-extras
+busybox-extras telnet localhost 6900
+```

@@ -24,6 +24,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **domain_date.sh** - получение даты, когда истекает регистрация доменов. Можно чуть видоименить скрипт, чтобы подключить его, например к Zabbix и таким образом мониторить expire доменов.
 * **create-instance-over-qemu.sh** - создание виртуальной машины в QEMU через Ubuntu/CentOS/Fedora с провиженингом через cloud-init
 * **docker_swarm** - все, что нужно для менеджмента docker swarm при работе через Auto-Scale в AWS
+* **docker-compose-gitlab2telegram.yml** - Gitlab Webhook в Telegram. В docker-compose.yml поменять url и токен Telegram бота
 
 # Сайт сканера безопасности для сайтов
 

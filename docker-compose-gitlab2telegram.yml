@@ -1,0 +1,86 @@
+version: '3'
+
+services:
+  mongo:
+    container_name: integram_mongo
+    restart: always
+    image: mongo:3.4
+    volumes:
+      - ./mongo:/data/db
+    expose:
+      - "27017"
+  redis:
+    container_name: integram_redis
+    restart: always
+    command: redis-server --appendonly no
+    image: redis
+    expose:
+        - "6379"
+    volumes:
+        - ./redis:/data
+  integram:
+    container_name: integram_integram
+    image: integram/integram:latest
+    restart: always
+    volumes:
+      - ./mainapp:/app/.conf
+    links:
+      - mongo
+      - redis
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - 172.17.0.1:8080:8080
+    environment:
+      - TZ=UTC
+      - INTEGRAM_MONGO_URL=mongodb://mongo:27017/integram
+      - INTEGRAM_REDIS_URL=redis:6379
+      - INTEGRAM_INSTANCE_MODE=multi-main
+      - INTEGRAM_CONFIG_DIR=/app/.conf
+      - INTEGRAM_DEBUG=1
+      ## required ENV vars
+      - INTEGRAM_PORT=8080
+      - INTEGRAM_BASE_URL=http://url...
+#  webhook:
+#    container_name: integram_webhook
+#    image: integram/webhook
+#    restart: always
+#    links:
+#      - mongo
+#      - redis
+#    depends_on:
+#      - integram
+#    environment:
+#      - TZ=UTC
+#      - INTEGRAM_PORT=8080
+#      - INTEGRAM_MONGO_URL=mongodb://mongo:27017/integram
+#      - INTEGRAM_REDIS_URL=redis:6379
+#      - INTEGRAM_INSTANCE_MODE=multi-service
+#      - INTEGRAM_DEBUG=1
+#
+#      ## required ENV vars
+#      - INTEGRAM_BASE_URL=http://url...
+#      - WEBHOOK_BOT_TOKEN=
+
+  gitlab:
+    container_name: integram_gitlab
+    image: integram/gitlab
+    restart: always
+    links:
+      - mongo
+      - redis
+    depends_on:
+      - integram
+    environment:
+      - TZ=UTC
+      - INTEGRAM_PORT=8080
+      - INTEGRAM_MONGO_URL=mongodb://mongo:27017/integram
+      - INTEGRAM_REDIS_URL=redis:6379
+      - INTEGRAM_INSTANCE_MODE=multi-service
+
+      ## required ENV vars
+      - INTEGRAM_BASE_URL=http://url...
+      - GITLAB_BOT_TOKEN=XXX:YYY
+      - GITLAB_OAUTH_ID=XXX
+      - GITLAB_OAUTH_SECRET=YYY

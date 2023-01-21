@@ -25,6 +25,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **create-instance-over-qemu.sh** - создание виртуальной машины в QEMU через Ubuntu/CentOS/Fedora с провиженингом через cloud-init
 * **docker_swarm** - все, что нужно для менеджмента docker swarm при работе через Auto-Scale в AWS
 * **docker-compose-gitlab2telegram.yml** - Gitlab Webhook в Telegram. В docker-compose.yml поменять url и токен Telegram бота
+* **cloudflare_iptables.sh** - начитка IP с CloudFlare и создание таблицы с этими адресами
 
 # Сайт сканера безопасности для сайтов
 

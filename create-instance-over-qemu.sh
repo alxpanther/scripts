@@ -1,10 +1,15 @@
 #!/bin/sh
 
+# Need install 'virt-install' (!)
+
 INSTANCE_NAME="front-1"
 INSTANCE_CPU=28
 INSTANCE_MEM=65535
 INSTANCE_DISK=16G
-INSTANCE_OS_VARIANT="ubuntu20.04"
+#INSTANCE_OS_VARIANT="ubuntu20.04"
+INSTANCE_OS_VARIANT="centos-stream8"
+IMAGE_NAME="CentOS-Stream-GenericCloud-8-20220913.0.x86_64.qcow2" # CentOS Ctream 8
+#IMAGE_NAME="focal-server-cloudimg-amd64.img" # Fedora
 
 #DOCKER_TOKEN_STR="SWMTKN-1-XXXXXXXXXX IP.IP.IP.IP:2377"
 
@@ -45,9 +50,10 @@ packages:
   - traceroute
   - wget
   - bc
-  - htop
-  - nload
-  - curl
+  - epel-release
+#  - htop
+#  - nload
+#  - curl
   - net-tools
 
 runcmd:
@@ -63,7 +69,7 @@ runcmd:
 EOF
 
 
-qemu-img create -f qcow2 -F qcow2 -o backing_file=focal-server-cloudimg-amd64.img ${INSTANCE_NAME}.qcow2
+qemu-img create -f qcow2 -F qcow2 -o backing_file=${IMAGE_NAME} ${INSTANCE_NAME}.qcow2
 qemu-img resize ${INSTANCE_NAME}.qcow2 ${INSTANCE_DISK}
 
 echo "local-hostname: ${INSTANCE_NAME}" > meta-data

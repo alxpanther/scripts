@@ -12,6 +12,7 @@ zone "1.20.10.in-addr.arpa"  { type master; notify yes; masterfile-format text; 
 * **sonatype_nexus/** - скрипт и playbook для Ansible по установке Sonatype Nexus Repository Manager (registry для docker, python, nodejs и т.д.)
 * **mail_log2telegram/** - сервис для отправки в Telegram ошибок 55* из лога почты (например Exim). Чтобы сразу видеть, что какое-то сообщение не ушло и причина какая
 * **grep_mail_logs/** - Web сервис для поиска в логах почты определенного адреса. Поиск идет по любому полю, будь-то email адрес или внутренни ID почтовика
+* **openvas/** - OpenVAS для сканирования уязвимостей
 * **ssh_tunnel.sh** - поднятие SSH тунеля (например для проброса порта MySQL с виртуалки на виртуалку, чтобы не пробрасывать порты через iptables и роутинг)
 * **backup_sites_w_bases.sh** - бекап базы и сайта сперва в tgz, а потом трансфер на удаленный бекап сервер.
 * **backup_gitlab.sh** - бекап GitLab'а

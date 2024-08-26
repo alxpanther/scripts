@@ -1,5 +1,5 @@
 #FROM php:8-fpm-bookworm
-FROM php:7.3-fpm-stretch
+FROM php:7.3-fpm-buster
 
 MAINTAINER Alexander Fedorko <alx69@ukr.net>
 

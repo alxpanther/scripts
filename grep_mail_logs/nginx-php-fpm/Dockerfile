@@ -1,10 +1,10 @@
-FROM php:8-fpm-bookworm
+#FROM php:8-fpm-bookworm
+FROM php:7.3-fpm-stretch
 
 MAINTAINER Alexander Fedorko <alx69@ukr.net>
 
 LABEL maintainer="Alexander Fedorko <alx69@ukr.net>" \
- project_name="PHP Grep for Exim E-Mail's" \
- from_os="Debian 12 (Bookworm)"
+ project_name="PHP Grep for Exim E-Mail's"
 
 ENV DEBIAN_FRONTEND=noninteractive
 

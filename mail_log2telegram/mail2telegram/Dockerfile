@@ -1,10 +1,10 @@
-FROM oraclelinux:9-slim
+FROM debian:stable-slim
 
 MAINTAINER Alexander Fedorko <alx69@ukr.net>
 
 LABEL maintainer="Alexander Fedorko <alx69@ukr.net>" \
  project_name="Errors from Exim log to Telegram" \
- from_os="OracleLinux 9"
+ from_os="Debian Stable"
 
 RUN mkdir -p /root/logs
 COPY mail2telegram.sh /root/

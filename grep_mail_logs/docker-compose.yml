@@ -1,6 +1,3 @@
-# DO NOT CHNAGE VERSION BELOW 3.6
-version: "3.6"
-
 services:
   nginx-php-fpm:
     container_name: nginx-php-fpm

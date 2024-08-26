@@ -1,24 +1,21 @@
-FROM centos:8
+FROM php:8-fpm-bookworm
 
 MAINTAINER Alexander Fedorko <alx69@ukr.net>
 
 LABEL maintainer="Alexander Fedorko <alx69@ukr.net>" \
  project_name="PHP Grep for Exim E-Mail's" \
- from_os="Centos 8"
+ from_os="Debian 12 (Bookworm)"
 
-RUN dnf -y install \
- bind-utils \
-# mc \
- nginx \
-# net-tools \
- curl \
- openssl \
- ca-certificates \
-# iputils \
-# procps \
- php-cli php-common \
- php-fpm \
- && dnf clean all
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt -y update && apt-get -y install --no-install-recommends openssl curl gnupg2 ca-certificates lsb-release debian-archive-keyring
+RUN curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+RUN gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/debian `lsb_release -cs` nginx" \
+    | tee /etc/apt/sources.list.d/nginx.list
+
+RUN apt -y install --no-install-recommends nginx
 
 RUN mkdir -p /run/php-fpm
 

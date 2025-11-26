@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Need install 'virt-install' (!)
+# Need install 'virt-install , genisoimage' (!)
 
 INSTANCE_NAME="front-1"
 INSTANCE_CPU=28
@@ -77,7 +77,7 @@ echo "local-hostname: ${INSTANCE_NAME}" > meta-data
 genisoimage  -output instance-cidata.iso -volid cidata -joliet -rock user-data meta-data
 rm meta-data user-data
 
-virt-install --connect qemu:///system --virt-type kvm --name ${INSTANCE_NAME} --ram ${INSTANCE_MEM} --vcpus=${INSTANCE_CPU} --os-type linux --os-variant ${INSTANCE_OS_VARIANT} --disk path=${INSTANCE_NAME}.qcow2,format=qcow2 --disk instance-cidata.iso,device=cdrom --import --network network=default --noautoconsole
+virt-install --connect qemu:///system --virt-type kvm --name ${INSTANCE_NAME} --ram ${INSTANCE_MEM} --vcpus=${INSTANCE_CPU} --os-variant ${INSTANCE_OS_VARIANT} --disk path=${INSTANCE_NAME}.qcow2,format=qcow2 --disk instance-cidata.iso,device=cdrom --import --network network=default --noautoconsole
 
 virsh list
 
